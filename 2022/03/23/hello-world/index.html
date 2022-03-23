@@ -344,7 +344,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">fstprint ../lang/L.fst &gt; L.txt<br></code></pre></td></tr></table></figure>
 
 <p>After we generated the L.fst, we can get the estimation from there. All the phones and words will get an ID. </p>
-<p>  phone_ID   word_ID     input: phone    output: word    probabilities<br>    0           1            <eps>            <eps>         0.6878887788<br>    1           2            EY1_S                A           0.7987897897<br>  …..<br>Here are the .fst format: </p>
+<p>  phone_ID   word_ID     input: phone    output: word    probabilities<br>    0           1            <eps>            <eps>         0.6878887788<br>    1           2            EY1_S                A           0.7987897897<br>  …..<br>Here are the .fst format: </eps></eps></p>
 <p>We can use fstdraw to draw the decoding graph.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">fstdraw --isymbols=../lang/phones.txt --osymbols=../lang/words.txt ../lang/L.fst  &gt; L.dot<br></code></pre></td></tr></table></figure>
 <p>We can firstly output a L.dot file then we can just draw it. So we can use .dot file to generate it into a jpg file.</p>
@@ -424,7 +424,7 @@
 <p>Vim:<br>To the top: GG<br>To the bottom: gg<br>vim name+tab : auto-type the name<br>auto sort: “:sort”<br>:set number: check how many lines<br>dd: delete one line</p>
 <p>search the “keyword”<br>&#x2F;“keyword”</p>
 <p>#other notes<br>The liux and windows files are not totally exchangeable, especially when we operate the .txt files on those two different kinds of machines.</p>
-<p>especially we can see some codes shows the dissimilarities like: <feff>.</p>
+<p>especially we can see some codes shows the dissimilarities like: <feff>.</feff></p>
 <p>we can use dos2unix tool to do the convertion:<br>After we did wget install dos2unix, then we can just do:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">dos2unix the_file_I_want_do_conversion.txt<br></code></pre></td></tr></table></figure>
 
