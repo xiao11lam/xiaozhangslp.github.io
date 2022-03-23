@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>hexo tutorials</title>
+    <link href="/2022/03/23/hexo-tutorials/"/>
+    <url>/2022/03/23/hexo-tutorials/</url>
+    
+    <content type="html"><![CDATA[<p>There are three commands which will be used everyday:</p><h1 id="Daily-Commands"><a href="#Daily-Commands" class="headerlink" title="Daily Commands"></a>Daily Commands</h1><figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><pre><code class="hljs Bash"><br>hexo clean       <span class="hljs-comment"># this is for cleaning the database</span><br>hexo g <br><span class="hljs-comment">#or </span><br>hexo generate  <span class="hljs-comment"># this is to generate the website with the latest updation</span><br><br><br>hexo d<br><span class="hljs-comment"># or</span><br>hexo deploy      <span class="hljs-comment"># deploy your webiste into your github repository</span><br><br><br>hexo new <span class="hljs-string">&quot;the_post_name_you_want_to_add_in&quot;</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Speech &amp; Language Proceesing OpenCourse</title>
     <link href="/2022/03/23/Speech-Language-Proceesing-OpenCourse/"/>
     <url>/2022/03/23/Speech-Language-Proceesing-OpenCourse/</url>
