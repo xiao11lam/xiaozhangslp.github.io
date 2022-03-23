@@ -1,0 +1,642 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Kaldi has a lot of examples in its projects.There are two necessary raw materials for us to train the model:  .wav file labelled .txt  We need four necessary elements in Kaldi! We call it “HCLG.fst”,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kalid Notes">
+<meta property="og:url" content="http://example.com/2022/03/23/hello-world/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Kaldi has a lot of examples in its projects.There are two necessary raw materials for us to train the model:  .wav file labelled .txt  We need four necessary elements in Kaldi! We call it “HCLG.fst”,">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-22T16:32:32.377Z">
+<meta property="article:modified_time" content="2022-03-22T16:38:49.489Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>Kalid Notes - Hexo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Xiao</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Kalid Notes">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-23 00:32" pubdate>
+        March 23, 2022 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      19k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      158 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Kalid Notes</h1>
+            
+            <div class="markdown-body">
+              <p>Kaldi has a lot of examples in its projects.There are two necessary raw materials for us to train the model:</p>
+<ol>
+<li>.wav file</li>
+<li>labelled .txt</li>
+</ol>
+<p>We need four necessary elements in Kaldi! We call it “HCLG.fst”, we can make speech recognition from this core idea. Acutally, just like we are building a map, and we just decode all the paths from there to get the prediction results. The underneath idea just like from the typology from the mathematics. </p>
+<p>We are using Viterbi algorithm to decoding our HCLG.fst. The exact name should be token passing method, which is a kind of variant algotithm of Viterbi.</p>
+<p>###Decoding problem<br>UTF-8 &amp; Ascii problem, the decoding problem. We can just run this before head into the shell, so we can manipulate the Chinese characters in Python in linux system.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-built_in">export</span> PYTHONIOENCODING=utf-8<br></code></pre></td></tr></table></figure>
+
+
+<p>In kaldi, 1 frame is 10ms. For some front work, it always like 24ms for one frame. For a workable dataset, we at least need 2000 hrs data. </p>
+<p>HCLG.fst includes：</p>
+<p>Here are the flowchart: from acoustic characteristics —&gt; phones —&gt; words —&gt; sentences<br>                                H.fst                                  L.fst       G.fst</p>
+<p>#2. H.fst<br>For H.fst, we input acoustic characteristics, output phones.</p>
+<h2 id="2-1-Make-MFCC"><a href="#2-1-Make-MFCC" class="headerlink" title="2.1 Make MFCC"></a>2.1 Make MFCC</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">steps/make_mfcc.sh --nj 1 --mfcc-config=/root/data/kaldi_file/<br></code></pre></td></tr></table></figure>
+
+
+
+
+<p>sudo cnpm install –save hexo-deployer-git</p>
+<p>###1. L.fst</p>
+<p>We input phones and output words. </p>
+<p>For building those four elements, we need 4 files: 1. wav.scp, 2. text, 3. utt2spk, 4. spk2utt.</p>
+<p>Here are the format of those 4 files:</p>
+<ol>
+<li>wav.scp: audio id –&gt; file directory path name</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> os<br><span class="hljs-comment">#The location of the audio directory</span><br>target_dir = <span class="hljs-string">&#x27;./../../&#x27;</span><br>save_path = <span class="hljs-string">&#x27;./../../&#x27;</span><br><br><span class="hljs-comment"># Loop all the audio resources</span><br>wav_scp = []<br><span class="hljs-keyword">for</span> file_name <span class="hljs-keyword">in</span> os.listdir(target_dir):<br><span class="hljs-comment"># Append all the .wav file into the list</span><br>	<span class="hljs-keyword">if</span> file_name[-<span class="hljs-number">3</span>:<span class="hljs-number">0</span>] == <span class="hljs-string">&quot;.wav&quot;</span>:<br><span class="hljs-comment"># Here we use &quot;.&quot; to split the file_name and use join to combine our directory address. We also can use &quot;os.path.join(target_dir + filename)&quot;. </span><br>		wav_scp.append([file_name.split(<span class="hljs-string">&quot;.&quot;</span>)[<span class="hljs-number">0</span>], os.path.join(target_dir, filename)])<br>		<span class="hljs-keyword">pass</span><br>	<span class="hljs-keyword">pass</span><br><span class="hljs-comment"># we can check the output by print(wav_scp)</span><br><span class="hljs-comment"># Save wav_scp</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(os.path.join(save_path, wav.scp), <span class="hljs-string">&#x27;w&#x27;</span>, encoding = <span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> file:<br><span class="hljs-comment"># Loop all the items in wav.scp and save them one by one	</span><br>	<span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> wav.scp: <br>		file.writelines(item[<span class="hljs-number">0</span>]+<span class="hljs-string">&quot; &quot;</span>+item[<span class="hljs-number">1</span>]+<span class="hljs-string">&quot;\n&quot;</span>)   <br>		<span class="hljs-comment">#Our output format should be:  filename target_dir filename</span><br>	    <span class="hljs-keyword">pass</span><br><span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+
+<p>The last step can be sorting the file name by vim:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Unix">:sort<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<ol start="2">
+<li>text:    audio id –&gt; labelled file</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> os<br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">From AUDIOSPK1001.txt get ID and &quot;I Love Kaldi&quot;</span><br><span class="hljs-string"></span><br><span class="hljs-string">AUDIOSPK1001 I Love Kaldi</span><br><span class="hljs-string">AUDIOSPK1002 Me too</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br>target_dir = <span class="hljs-string">&quot;./.../.../&quot;</span><br><span class="hljs-comment"># This is the stored text file</span><br><br>save_path = <span class="hljs-string">&quot;./.../.../&quot;</span><br>text = []<br><br><br><span class="hljs-comment"># loop all the text file name in directory</span><br><span class="hljs-keyword">for</span> filename <span class="hljs-keyword">in</span> os.listdir(target_dir):<br>	<span class="hljs-comment"># only operate the file that ends with &quot;.txt&quot;</span><br>	<span class="hljs-keyword">if</span> filename[-<span class="hljs-number">4</span>:] != <span class="hljs-string">&quot;.txt&quot;</span>:<br>		<span class="hljs-keyword">continue</span><br><br>	<span class="hljs-comment"># read the file</span><br>	<span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(os.path.join(target_dir, filename), <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>)<span class="hljs-keyword">as</span> file:<br>		<span class="hljs-comment"># read line by line </span><br>		<span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> file.readlines():<br>			<span class="hljs-comment"># Delete all &quot;\n&quot; and the the space</span><br>			line = line.strip(<span class="hljs-string">&quot;\n&quot;</span>).strip()<br>			<span class="hljs-comment"># print(line.strip(&quot;\n&quot;)), we can print the text files all in one screen without the \n symbols.</span><br><br>			<span class="hljs-comment"># Get the filename with its contents</span><br>			text.append([filename.split(<span class="hljs-string">&quot;.&quot;</span>)[<span class="hljs-number">0</span>], line])<br><br>			<span class="hljs-keyword">pass</span><br>		<span class="hljs-keyword">pass</span><br>	<span class="hljs-keyword">pass</span><br><br><br><span class="hljs-comment"># save the file as nosegment </span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(os.join(os.path.join(save_path, <span class="hljs-string">&quot;text.nosegement&quot;</span>)), <span class="hljs-string">&#x27;w&#x27;</span>, encoding = <span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>	<span class="hljs-comment"># loop all the lines and save it one by one.</span><br>	<span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> text:<br>		file.writelines(item[<span class="hljs-number">0</span>] + <span class="hljs-string">&quot; &quot;</span> + item[<span class="hljs-number">1</span>] + <span class="hljs-string">&quot;\n&quot;</span>)<br>	<span class="hljs-keyword">pass</span> <br><br><br><span class="hljs-built_in">print</span>(text)<br></code></pre></td></tr></table></figure>
+
+
+<p>##2 Text washing(prepare the data)<br>We need to prpare the data and do the data cleaning from the data_path directory<br>def pre_data(data_path):<br>###2.1 Regular Expression, this is always the first step</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">This is core processing function, we mostly use Regular Expression here.</span><br><span class="hljs-string">Here is just a sample code, that we need to deal with: abrabic numbers, if its number, then there is no need to do segment, just replace it with space one by one. </span><br><span class="hljs-string"></span><br><span class="hljs-string">input：&quot;一二三五六&quot;</span><br><span class="hljs-string">output：&quot;一 二 三 五 六&quot;</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><br><br><br><br><br>```Python<br><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solve_data</span>():<br>	<span class="hljs-comment"># Delete &quot;()&quot;</span><br>	<span class="hljs-comment"># detect Chinese characters(\u4e00-\u9fa5) from a-z, A-Z, 0-9, &quot;.&quot;. It will catch the sentences with those elements.</span><br>	a = re.findall(<span class="hljs-string">&#x27;[\u4e00-\u9fa5a-zA-Z0-9 .]+&#x27;</span>, data, re.S)<br>	<span class="hljs-comment">#print(&quot;&quot;.join(a))</span><br>	<span class="hljs-keyword">return</span> <span class="hljs-string">&quot; &quot;</span>.join(a)<br>	<span class="hljs-keyword">pass</span><br><br><span class="hljs-comment"># save the results into a new &quot;solve_data&quot; path</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">pre_data</span>(<span class="hljs-params">data_path+<span class="hljs-string">&quot;solve_data&quot;</span></span>):<br>	data = []<br>	<span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(data_path, <span class="hljs-string">&quot;w&quot;</span>, encoding=utf-<span class="hljs-number">8</span>) <span class="hljs-keyword">as</span> file:<br>		<span class="hljs-comment"># loop all the lines</span><br>		<span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> data:<br>			file.writelines(<span class="hljs-built_in">str</span>(line)+<span class="hljs-string">&quot;\n&quot;</span>)<br>			<span class="hljs-keyword">pass</span><br>		<span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+<p>After we get our target, we need to set the processing functions.</p>
+<p>####2.1.1 Replace numbers into words</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">replace_num</span>(<span class="hljs-params">data</span>)<br>	data.replace(<span class="hljs-string">&quot;.&quot;</span>, <span class="hljs-string">&quot;dot&quot;</span>)<br>	data.replace(<span class="hljs-string">&quot;0&quot;</span>, <span class="hljs-string">&quot;zero&quot;</span>)<br>	data.replace(<span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-string">&quot;one&quot;</span>)<br>	data.replace(<span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-string">&quot;two&quot;</span>)<br>	data.replace(<span class="hljs-string">&quot;3&quot;</span>, <span class="hljs-string">&quot;three&quot;</span>)<br>	<span class="hljs-comment"># .......	</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>###2.2 Segment</p>
+<p>We need to enterpret the text file to phones, the tools we need is lexicon, which is just like the dictionary. So in this way, we need to segement the words, and according to our prior knowledge from our dictionary, so we can invert the segmented words into the phones. This step is typically used for the language like Chinese, since for Chinese, the word’s stop is not just like we put a space there, but we need to segment it manually. For Chinese, we mostly use Jieba to segement the sentences into words. </p>
+<p>Here are the preview of the results should be:<br>input：”今天是一个好日子”<br>output：”今天 是 一个 好 日子”</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> jieba<br><br><span class="hljs-comment"># Claim the function for segmenting</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">segment_item</span>(<span class="hljs-params">data</span>):<br>	<span class="hljs-keyword">return</span> <span class="hljs-string">&quot; &quot;</span>.join(jieba.cut(data))<br>	<span class="hljs-keyword">pass</span><br><span class="hljs-comment"># After we set this function we can combine into the previous saving files.</span><br><span class="hljs-comment"># save the file as nosegment </span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(os.join(os.path.join(save_path, <span class="hljs-string">&quot;text.nosegement&quot;</span>)), <span class="hljs-string">&#x27;w&#x27;</span>, encoding = <span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>	<span class="hljs-comment"># loop all the lines and save it one by one.</span><br>	<span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> text:<br>		<span class="hljs-comment"># we firstly do the segment and then save it one by one</span><br>		segmet_list = segement_item(item[<span class="hljs-number">1</span>])<br>		file.writelines(item[<span class="hljs-number">0</span>] + <span class="hljs-string">&quot; &quot;</span> + segmet_list + <span class="hljs-string">&quot;\n&quot;</span>)<br>	<span class="hljs-keyword">pass</span> <br><br></code></pre></td></tr></table></figure>
+
+<h1 id="2-3-Combine-into-a-whole-processing-structure"><a href="#2-3-Combine-into-a-whole-processing-structure" class="headerlink" title="2.3 Combine into a whole processing structure"></a>2.3 Combine into a whole processing structure</h1><p>Now after we did the regular expression and jieba. We just combine them together. </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">jieba_cut_data</span>(<span class="hljs-params">data</span>):<br><br>	data = replace_num(data)<br>	<span class="hljs-comment"># this is just for the normal case, we just need to cut the sentences</span><br>	<span class="hljs-comment"># cut the words with &quot; &quot; one space, and replace the &quot;  &quot;(two spaces) into only one space.</span><br>	data = <span class="hljs-string">&quot; &quot;</span>.join(jieba.cut(data)).replace(<span class="hljs-string">&quot;  &quot;</span>, <span class="hljs-string">&quot; &quot;</span>))<br><br><br>	<span class="hljs-comment"># these are the needs for unusual cases, which we dealt before in the RE section, we already found out the words with those elements we want to handle with. Now, it is time for us to deal with them. If there is all numbers, so we just do not split the words, like &quot;一二三四五&quot;.</span><br>	is_cut =  <span class="hljs-literal">True</span><br><br><br><br>	<span class="hljs-comment"># here if the scenario is TRUE, which means there is a element in there, if all are numbers it will become [True, True, True, True, True, ... True, True], in that case, it will be &quot;is_cut&quot; ture. Not in, is not return anymore.</span><br>	<span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">	input:  这是 学习 笔记</span><br><span class="hljs-string">	output: [], which is an empty list</span><br><span class="hljs-string"></span><br><span class="hljs-string">	input:  这是一本学习笔记本卖两块</span><br><span class="hljs-string">	output: [  Ture,         True], sum this list we got 2, but not equals to the previous list length, so we do not process it.</span><br><span class="hljs-string"></span><br><span class="hljs-string">	input:  一二三四五</span><br><span class="hljs-string">	output: [Ture, Ture, Ture, Ture, True], sum this list we got 5, equals to the previous list length, so we process it.</span><br><span class="hljs-string"></span><br><span class="hljs-string"></span><br><span class="hljs-string">	&#x27;&#x27;&#x27;</span><br><br>	<span class="hljs-keyword">if</span> <span class="hljs-built_in">sum</span>（[<span class="hljs-literal">True</span> <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> data <span class="hljs-keyword">if</span> item <span class="hljs-keyword">in</span> [<span class="hljs-string">&quot;零&quot;</span>], [<span class="hljs-string">&quot;壹&quot;</span>], [<span class="hljs-string">&quot;二&quot;</span>], [<span class="hljs-string">&quot;三&quot;</span>], [<span class="hljs-string">&quot;四&quot;</span>]， [<span class="hljs-string">&quot;五&quot;</span>]]）== !<span class="hljs-built_in">len</span>(data):<br>		is_cut = <span class="hljs-literal">True</span><br><br>	<span class="hljs-comment"># here if the scenario is TRUE, not all the context are numbers. we just follow the normal way, cut it with jieba, and replace the two spaces into one space.</span><br>	<span class="hljs-keyword">if</span> is_cut:<br>		data = <span class="hljs-string">&quot; &quot;</span>.join(jieba.cut(data)).replace(<span class="hljs-string">&quot;  &quot;</span>, <span class="hljs-string">&quot; &quot;</span>))<br>	<span class="hljs-keyword">else</span>：<br>	<span class="hljs-comment"># we process those context with full numbers.</span><br>	<span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">	input:  一二三四五</span><br><span class="hljs-string">	output: [一 二 三 四 五]</span><br><span class="hljs-string">	&#x27;&#x27;&#x27;</span><br>		data = <span class="hljs-string">&quot; &quot;</span>.join(data)<br>	<span class="hljs-keyword">return</span> data<br><br>	<span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><br>data = []<br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(data_path, <span class="hljs-string">&#x27;r&#x27;</span>, encoding = <span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>	<span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> file.readlines():<br>		<span class="hljs-comment"># print(line.strip(&quot;\n&quot;).strip()), preview the results to delete the &#x27;\n&#x27; together with the space.</span><br>		<span class="hljs-comment"># just append the data that once processed.</span><br>		<span class="hljs-comment"># bef_data here is the before data</span><br>		bef_data = line.strip(<span class="hljs-string">&quot;\n&quot;</span>).strip()<br>		<span class="hljs-comment"># cut the sentences into words</span><br>		bef_data = <span class="hljs-string">&quot; &quot;</span>.join(jieba.cut(bef_data))<br>		<span class="hljs-comment"># here we input the bef_data, after processed in solve_data() function to get the processed data</span><br>		data.append(solve_data(bef_data))<br>	<span class="hljs-keyword">pass</span><br><span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><br><br><span class="hljs-comment"># this is a magic function</span><br><span class="hljs-keyword">if</span> _name_== <span class="hljs-string">&#x27;_main_&#x27;</span>:<br>	data_path = <span class="hljs-string">&quot;./.../.../&quot;</span><br>	pre_data(data_path)<br><br></code></pre></td></tr></table></figure>
+
+<h1 id="2-4-lexicon-txt-get-lexicon-py"><a href="#2-4-lexicon-txt-get-lexicon-py" class="headerlink" title="2.4 lexicon.txt   get_lexicon.py"></a>2.4 lexicon.txt   get_lexicon.py</h1><p>We need two kinds of dictionaries.<br>1st. the lexicon.txt from the corpus to better train a n-gram model, in some words, the language model.<br>2st. the word-to-phones, we also need a reference lists from there, we need acoustic model. In this case, so we need a “BIG” dictionary.</p>
+<p>In this step, we need to transform the words into phones, so we can align the words and train them.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs python"><br>	<span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">	This is the dictionary mostly for the acoustic training needs.</span><br><span class="hljs-string">	去年  q v4 n ian2</span><br><span class="hljs-string">	上去  sh ang4 q v4</span><br><span class="hljs-string">	上去  sh ang4 q v5</span><br><span class="hljs-string"></span><br><span class="hljs-string">	&#x27;&#x27;&#x27;</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_lexicon</span>(<span class="hljs-params">data_path</span>):<br><br>	<span class="hljs-comment"># set can reduce the duplications. The dictionary must be just a set. </span><br>	lexicon = <span class="hljs-built_in">set</span>()<br>	<span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;data_path&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>, encoding = <span class="hljs-string">&quot;utf-8&quot;</span>) <span class="hljs-keyword">as</span> file:<br>		<span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> file.readlines():<br>			<span class="hljs-comment">#print(line.strip(&quot;\n&quot;).strip().split(&quot; &quot;)), remove the \n and cut with the identifier from the SPACE &quot; &quot;</span><br>			[lexicon.add(item) <span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> line.strip(<span class="hljs-string">&quot;\n&quot;</span>).strip().split(<span class="hljs-string">&quot; &quot;</span>)]<br>	<span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">				input:  这是一本学习笔记本卖两块</span><br><span class="hljs-string">				output: [这是，一本， 学习， 笔记本， 卖， 两块],</span><br><span class="hljs-string">	&#x27;&#x27;&#x27;</span><br><br><br>			<span class="hljs-keyword">pass</span><br>		<span class="hljs-keyword">pass</span><br>		<span class="hljs-comment">#print(lexicon)</span><br>		<span class="hljs-comment"># save the lexicon</span><br>		<span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;../.../lexicon.txt&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>, encoding = <span class="hljs-string">&quot;utf-8&quot;</span>) <span class="hljs-keyword">as</span> file:<br>			<span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> lexicon:<br>				file.writelines(item + <span class="hljs-string">&quot;\n&quot;</span>)<br>		<span class="hljs-comment"># here are the estimated results.</span><br>		<span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">		去年 </span><br><span class="hljs-string">		上去  </span><br><span class="hljs-string">		上去  </span><br><span class="hljs-string">		一</span><br><span class="hljs-string">		笔记本</span><br><span class="hljs-string">		卖</span><br><span class="hljs-string">		&#x27;&#x27;&#x27;</span><br>				<span class="hljs-keyword">pass</span><br>			<span class="hljs-keyword">pass</span><br>	<span class="hljs-keyword">pass</span><br><br>get_lexicon(<span class="hljs-string">&quot;./.../temp&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+
+
+<p>Finally we can get the ID to words.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs Python"><br><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">ID    [word1, word2, word3, ..., wordn]</span><br><span class="hljs-string">[&#x27;UDIOSPK1001SEN01&#x27;, &#x27;I, Love, Kaldi&#x27;]</span><br><span class="hljs-string">[&#x27;UDIOSPK1001SEN02&#x27;, &#x27;Me, too&#x27;]</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">id2words</span>(<span class="hljs-params">data_path</span>):<br><br>	<span class="hljs-keyword">for</span> file_name <span class="hljs-keyword">in</span> os.listdir(data_path):<br>		<span class="hljs-keyword">if</span> fiel_name[-<span class="hljs-number">3</span>:<span class="hljs-number">0</span>] == <span class="hljs-string">&quot;txt&quot;</span>:<br>			<span class="hljs-keyword">continue</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">...........</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><br></code></pre></td></tr></table></figure>
+
+
+<h1 id="Dictionary-this-is-the-dict-file-we-need-to-manipulate-in-data-x2F-local-x2F-dict-directory"><a href="#Dictionary-this-is-the-dict-file-we-need-to-manipulate-in-data-x2F-local-x2F-dict-directory" class="headerlink" title="Dictionary this is the dict file we need to manipulate, in data&#x2F;local&#x2F;dict directory"></a>Dictionary this is the dict file we need to manipulate, in data&#x2F;local&#x2F;dict directory</h1><ol start="3">
+<li><p>utt2spk: audio id –&gt; SPK id</p>
+</li>
+<li><p>spk2utt: SPK      –&gt; audio id</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">import</span> os<br><span class="hljs-comment"># The path of the audio resources</span><br>path_dir = <span class="hljs-string">&quot;./.../.../&quot;</span><br><br><br><span class="hljs-comment"># The final output path</span><br>save_path = <span class="hljs-string">&quot;./.../.../&quot;</span><br><br><br><br><span class="hljs-comment"># Save the final results</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">save_data</span>(<span class="hljs-params">data, file_name</span>):<br>	<span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(os.path.join(target_file, file_name), <span class="hljs-string">&#x27;w&#x27;</span>, encoding = <span class="hljs-string">&quot;utf-8&quot;</span>) <span class="hljs-keyword">as</span> file:<br>		<span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> data:<br>			<span class="hljs-comment"># save the item line in line</span><br>			file.writelines(item)<br>			<span class="hljs-keyword">pass</span><br>		<span class="hljs-keyword">pass</span><br>	<span class="hljs-keyword">pass</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">Audio file name: AUDIOSPK1001.wav</span><br><span class="hljs-string"></span><br><span class="hljs-string">	AUDIOSPK1001 SPK1</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_utt2spk</span>():<br>	<span class="hljs-comment"># For saving the final results</span><br>	utt2spk = [] <br>	<span class="hljs-comment"># loop all the directories</span><br>	<span class="hljs-keyword">for</span> file_name <span class="hljs-keyword">in</span> os.listdir(path_dir):<br>		<span class="hljs-comment"># if the file itself is .wav file, we operate, others dismiss</span><br>		<span class="hljs-keyword">if</span> file_name[-<span class="hljs-number">4</span>:] == <span class="hljs-string">&quot;.wav&quot;</span>:<br><br><br>		<span class="hljs-comment"># Audio ID</span><br>		utt = file_name.split(<span class="hljs-string">&quot;.&quot;</span>)[<span class="hljs-number">0</span>]<br>		<span class="hljs-comment"># SPK ID</span><br>		spk = utt[-<span class="hljs-number">7</span>:-<span class="hljs-number">5</span>]<br><br>		<span class="hljs-comment"># Print(utt+ &quot; &quot; + spk + &quot;\n&quot;)</span><br>		<span class="hljs-comment"># Add into utt2spk</span><br>		utt2spk.append(utt + <span class="hljs-string">&quot; &quot;</span> + spk + <span class="hljs-string">&quot;\n&quot;</span>)<br>		<span class="hljs-keyword">pass</span><br>	<span class="hljs-keyword">pass</span><br><span class="hljs-comment"># save the data</span><br>save_data(utt2spk, <span class="hljs-string">&quot;utt2spk&quot;</span>)<br><br><br><br><span class="hljs-comment"># set the function to get spk2utt</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">Audio file name: AUDIOSPK1001.wav</span><br><span class="hljs-string"></span><br><span class="hljs-string">	SPK1 AUDIOSPK1001 AUDIOSPK1002</span><br><span class="hljs-string">	SPK2 AUDIOSPK2001 AUDIOSPK2001</span><br><span class="hljs-string">	......</span><br><span class="hljs-string">dict&#123;</span><br><span class="hljs-string">	&quot;SPK1&quot; : [AUDIOSPK1001, AUDIOSPK1002],</span><br><span class="hljs-string">	&quot;SPK2&quot; : [AUDIOSPK2001, AUDIOSPK2002],</span><br><span class="hljs-string">	......</span><br><span class="hljs-string">&#125;</span><br><span class="hljs-string"></span><br><span class="hljs-string"></span><br><span class="hljs-string"></span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">get_spk2utt</span>():<br>	spk2utt = &#123;&#125;<br>	<span class="hljs-keyword">for</span> file_name <span class="hljs-keyword">in</span> os.listdir(path_dir):<br>		<span class="hljs-comment"># Delete a file</span><br>		<span class="hljs-keyword">if</span> file_name[-<span class="hljs-number">4</span>:<span class="hljs-number">0</span>] == <span class="hljs-string">&quot;.txt&quot;</span>:<br>			<span class="hljs-keyword">continue</span><br>		<span class="hljs-comment"># audio ID</span><br>		utt = file_name.split(<span class="hljs-string">&quot;.&quot;</span>)[<span class="hljs-number">0</span>]<br>		<span class="hljs-comment"># SPK ID</span><br>		spk = utt[-<span class="hljs-number">7</span>:-<span class="hljs-number">5</span>]<br><br><br>		<span class="hljs-comment"># If there has a SPK here, we just append</span><br>		<span class="hljs-keyword">if</span> spk <span class="hljs-keyword">in</span> spk2utt:<br>			spk2utt[spk].append(utt)<br>		<span class="hljs-comment"># If there not have a SPK here, we just preset it as a list. </span><br>		<span class="hljs-keyword">else</span>:<br>			spk2utt[spk] = []<br>		<span class="hljs-keyword">pass</span><br><br>		<span class="hljs-comment"># using print(spk2utt) to check</span><br><br>		<span class="hljs-comment"># final output list from the dict</span><br>		write_spk2utt = []<br>		<span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> spk2utt.keys():<br>			write_spk2utt.append(<span class="hljs-built_in">str</span>(key)+<span class="hljs-string">&quot; &quot;</span>.join(spk2utt(key))+<span class="hljs-string">&quot;\n&quot;</span>)<br>			<span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">				list = [&quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot;]</span><br><span class="hljs-string">				print(&quot; &quot;.join(list))</span><br><span class="hljs-string">			------------------------------------------------------</span><br><span class="hljs-string">				A B C D</span><br><span class="hljs-string">			&#x27;&#x27;&#x27;</span><br>			<span class="hljs-keyword">pass</span><br>		<span class="hljs-comment"># save the output</span><br>		save_data(write_spk2utt, <span class="hljs-string">&quot;spk2utt&quot;</span>)<br>	<span class="hljs-keyword">pass</span><br><br><br><br>get_spk2utt()<br>get_utt2spk()<br><br><br><br><br><br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>If we do not caring about the SPK, just focus on the audio content itslelf will be a big issue. Since as we know, we do need know the spk’s voice characteristics and this will affect our trainings,we need to take that bias into it. We will do “CMVN” here, this will be applied for prior distribution for male and female. The value between the “CMVN” is [0-1]. </p>
+<p>The difference between the utt2spk and the spk2utt is that, for utt2spk, there is only one-to-one relations instead of like spk2utt, there are one-to-multiple relation. So, in most cases, we only need either 3 or 4, because if we already got one, another one is also can be derived.</p>
+<p>How to get those four files can be the core idea of the kaldi ASR system. The ASR detection logic can be: acoustic features –&gt; H.fst –&gt; phones C.fst –&gt; L.fst + G.fst (linguistics) –&gt; words.</p>
+<p>dict includes:</p>
+<ol>
+<li>lexicon.txt : word –&gt; phones</li>
+<li>phone.txt&#x2F;nonsilence_phones.txt : all the phones</li>
+<li>silence_phones.txt : SIL</li>
+</ol>
+<h1 id="Generate-run-sh-amp-get-L-fst"><a href="#Generate-run-sh-amp-get-L-fst" class="headerlink" title="Generate run.sh &amp; get L.fst"></a>Generate run.sh &amp; get L.fst</h1><p>The final step should be write a run.sh file to generate the L.fst file.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-comment"># 1. generate the L.fst</span><br><br><span class="hljs-comment"># here we used prepare_lang.sh </span><br><span class="hljs-comment"># there are four params we input: </span><br><br><span class="hljs-comment">#	1. the four files we prepared, fix_data_dir.sh ./local/dict</span><br><span class="hljs-comment">#   2. If there has the phones not in the dictionary, what it will be recognized as &#x27;SIL&#x27;</span><br><span class="hljs-comment">#   3. the temp files</span><br><span class="hljs-comment">#   4. F.fst</span><br><br><br>utils/prepare_lang.sh ./local/dict <span class="hljs-string">&#x27;SIL&#x27;</span> ./temp/01/ L/lang<br><br><br><br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+<h1 id="Visualize-the-fst-file"><a href="#Visualize-the-fst-file" class="headerlink" title="Visualize the .fst file"></a>Visualize the .fst file</h1><p>we can print the .fst here to see the whole results.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">fstprint ../lang/L.fst<br></code></pre></td></tr></table></figure>
+
+<p>Save the log of the L.fst into L.txt.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">fstprint ../lang/L.fst &gt; L.txt<br></code></pre></td></tr></table></figure>
+
+<p>After we generated the L.fst, we can get the estimation from there. All the phones and words will get an ID. </p>
+<p>  phone_ID   word_ID     input: phone    output: word    probabilities<br>    0           1            <eps>            <eps>         0.6878887788<br>    1           2            EY1_S                A           0.7987897897<br>  …..<br>Here are the .fst format: </p>
+<p>We can use fstdraw to draw the decoding graph.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">fstdraw --isymbols=../lang/phones.txt --osymbols=../lang/words.txt ../lang/L.fst  &gt; L.dot<br></code></pre></td></tr></table></figure>
+<p>We can firstly output a L.dot file then we can just draw it. So we can use .dot file to generate it into a jpg file.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Bash">apt wget install ghostscript<br>apt wget install graphviz<br>dot -Tjpg L.dot &gt; L.jpg<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+<p>###3. C.fst （Context） In here, means the phones can be affected by the phones next to it<br>Input phones and output phones. </p>
+<p>###4. G.fst : just n-gram  get_lm.sh<br>we can download srilm. </p>
+<p>Language model is very easy, we just need to prepare the corpus line by line and make sure cutted the sentences.</p>
+<p>G.fst actually is G.fsa, fsa is a very typical kind of fst, it is a kind of reciever, which inputs equals to output.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-comment"># the name can be set as: text.lm</span><br><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string"></span><br><span class="hljs-string">[word1, word2, word3, ..., wordn]</span><br><span class="hljs-string">[&#x27;I, Love, Kaldi&#x27;]</span><br><span class="hljs-string">[&#x27;Me, too&#x27;]</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><br></code></pre></td></tr></table></figure>
+
+<p>Here we just introduce UNIX way to do it. We will use awk. </p>
+<p>Awk is very fast then python, if there is efficiency needs.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs Python"><br><span class="hljs-comment"># get the corpus input we need to process </span><br>file_name = <span class="hljs-string">&#x27;/root/data/.../...&#x27;</span> <br><br><span class="hljs-comment"># read the file</span><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(file_name, <span class="hljs-string">&#x27;r&#x27;</span>, encoding = <span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> file:<br>	<span class="hljs-keyword">for</span> item <span class="hljs-keyword">in</span> file.readlines():<br>		<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot; &quot;</span>.join(item.strip(<span class="hljs-string">&quot;\n&quot;</span>)strip().split(<span class="hljs-string">&quot; &quot;</span>)[<span class="hljs-number">1</span>:]))<br>		<span class="hljs-keyword">pass</span><br>	<span class="hljs-keyword">pass</span><br><br><br><br><span class="hljs-comment"># we can just get [word1, word2, word3, ..., wordn]</span><br></code></pre></td></tr></table></figure>
+
+<p>We will use the AWK to do the same thing.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-comment"># here are the original idea</span><br><span class="hljs-comment">#[AUDIOSPK1001 &#x27;I, Love, Kaldi&#x27;]</span><br><span class="hljs-comment">#[AUDIOSPK1001 &#x27;Me, too&#x27;]</span><br><span class="hljs-comment"># we can just firstly test it with print in awk</span><br>awk <span class="hljs-string">&#x27;&#123;print $1&#125;&#x27;</span> text <span class="hljs-comment"># here &quot;text&quot; means the txt file you want to manipulate, her is $1 means we print the first colum. It will look like:</span><br><span class="hljs-comment"># AUDIOSPK1001</span><br><span class="hljs-comment"># AUDIOSPK1002</span><br><br><span class="hljs-comment"># If is $0, which means the whole. $2 means the second column. $4 is the fourth column.</span><br></code></pre></td></tr></table></figure>
+
+
+<p>Here we need to get the column that except the first column.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><br>awk <span class="hljs-string">&#x27;&#123;for(i=2; i&lt;NF; i++) printf $i &quot;\t&quot;; printf &#x27;</span>\n<span class="hljs-string">&#x27;&#125;&#x27;</span> text <span class="hljs-comment"># here the \t is just like \n,  we can delete it as well. the default diving symbol is &#x27; &#x27;, in here actually awk -F &#x27; &#x27;&#x27;&#123;for(i=2; i&lt;NF; i++) printf $i &quot;\t&quot;; printf &#x27;\n&#x27;&#125;&#x27; text. NF is the last column, awk is based on column manipulations. </span><br><br>awk <span class="hljs-string">&#x27;&#123;for(i=2; i&lt;NF; i++) printf $i &quot;&quot;; printf &#x27;</span>\n<span class="hljs-string">&#x27;&#125;&#x27;</span> text<br><span class="hljs-comment"># we will get exactly the same output just like python, but much faster:</span><br><span class="hljs-comment"># word1, word2, word3, ..., wordn</span><br><span class="hljs-comment"># I, Love, Kaldi</span><br><span class="hljs-comment"># Me, too</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="write-get-lm-sh-we-need-to-write-aw-shell-script-to-run-and-get-th-lm-language-model"><a href="#write-get-lm-sh-we-need-to-write-aw-shell-script-to-run-and-get-th-lm-language-model" class="headerlink" title="write get_lm.sh (we need to write aw shell script to run and get th lm(language model))"></a>write get_lm.sh (we need to write aw shell script to run and get th lm(language model))</h3><p>n-gram language model is statistical language model, more traning data can be more “better” in some ways. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-comment"># You need firstly specify your corpus sources.</span><br>text = <span class="hljs-string">&quot;./text.lm&quot;</span><br><span class="hljs-comment"># 1. get all the corpus</span><br><span class="hljs-comment"># awk &#x27;&#123;for(i=2; i&lt;NF; i++) printf $i &quot;&quot;; printf &#x27;\n&#x27;&#125;&#x27; text &gt; xxx.lm</span><br><span class="hljs-comment"># loop all the columns:</span><br><span class="hljs-comment">#	NF here means the last column</span><br><span class="hljs-comment">#   printf just like C language, they are the same in some ways</span><br><span class="hljs-comment"># 2. Deploy Trigram n-gram model</span><br>ngram-count -text text.lm -order 3 write train.part.txt.count  <br><span class="hljs-comment"># OR we can use</span><br>ngram-count -text <span class="hljs-variable">$text</span> -order 3 write train.part.txt.count  <br><span class="hljs-comment"># $text means the file itself, we already defined it at first.</span><br><span class="hljs-comment"># -text: the corpus</span><br><span class="hljs-comment"># wirte: write the file</span><br><span class="hljs-comment"># here 3 means tri, which indicates triphone, and write into train.part.txt.count file.</span><br><span class="hljs-comment"># here are the preview</span><br><br><span class="hljs-comment">#   word  pairs         times</span><br><span class="hljs-comment">#      I                  10</span><br><span class="hljs-comment">#    I  Love              5</span><br><span class="hljs-comment">#  I  Love Kaldi          1</span><br><span class="hljs-comment">#  Hello World &lt;/s&gt;       2</span><br><span class="hljs-comment">#  &lt;/s&gt; is great          1</span><br><span class="hljs-comment"># &lt;/s&gt; means the starting or ending point, usually means something will begin or end from there.  </span><br><br><span class="hljs-comment"># 3. From the 2nd step,  generateing the lm</span><br>ngram-count -<span class="hljs-built_in">read</span> train.part.txt.count -order 3 -lm LM -interpole -kndiscount<br><span class="hljs-comment">#  -lm which means the generated Language Model, right now we call it LM</span><br><span class="hljs-comment"># -interpole is the smoothing function, and kndiscount is the callback function.There are two possibilities, one is the original and other which is callback function.</span><br><span class="hljs-comment">#  \data\</span><br><span class="hljs-comment"># ngram 1 = 2821      , here means there are 2821 1grams&#x27; pairs</span><br><span class="hljs-comment"># ngram 2 = 6344</span><br><span class="hljs-comment"># ngram 3 = 444</span><br><span class="hljs-comment"># \1-grams:</span><br><span class="hljs-comment"># -3.4234324     1       -0.034523532 this is also probabities but with log(), we call backoff method</span><br><span class="hljs-comment"># -3.4234224     2       -0.032323532</span><br><span class="hljs-comment"># -2.3234224     A       -0.023233532</span><br><span class="hljs-comment"># \2-grams:</span><br><span class="hljs-comment"># -3.2424432     I  Love          -0.232312332</span><br><span class="hljs-comment"># \3-grams:</span><br><span class="hljs-comment"># -4.3244343     I  Love Kaldi    -0.454554545</span><br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="Generate-G-fst"><a href="#Generate-G-fst" class="headerlink" title="Generate G.fst"></a>Generate G.fst</h2><p>There has two ways to generate G.fst.</p>
+<h3 id="Way1-Just-Call-from-the-Kaldi-shell"><a href="#Way1-Just-Call-from-the-Kaldi-shell" class="headerlink" title="Way1: Just Call from the Kaldi shell"></a>Way1: Just Call from the Kaldi shell</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">utils/format_lm_sri.sh data/lang /lm/LM /data/local/dict/lexicon.txt/data/lang_test<br></code></pre></td></tr></table></figure>
+<h3 id="Way2-using-arpa2fst"><a href="#Way2-using-arpa2fst" class="headerlink" title="Way2: using arpa2fst"></a>Way2: using arpa2fst</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">arpa2fst --disambig-symbol=<span class="hljs-comment">#0 --read-symbol-table=/data/lang/words.txt /lm/LM/G.fst</span><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><a target="_blank" rel="noopener" href="https://speech.zone/">https://speech.zone/</a></p>
+<h1 id="UNIX-Shell-Cmds"><a href="#UNIX-Shell-Cmds" class="headerlink" title="UNIX Shell Cmds"></a>UNIX Shell Cmds</h1><p>cp  -r S0252&#x2F;S0252_mic&#x2F;* .&#x2F;S0150&#x2F;S0150_mic&#x2F;</p>
+<p>Copy all the data from the “S0252&#x2F;S0252_mic&#x2F;“ directory to “&#x2F;S0150&#x2F;S0150_mic&#x2F;“ directory. “-r” means copy directly without any warnings.</p>
+<p>du -sh<br>Check the size of the directory.</p>
+<p>du -h –max-depth&#x3D;1 &#x2F;.<br>Check all the directory size under the current directory.</p>
+<p>ls | wc -l<br>Check how many files in one directory</p>
+<p>rm -rf .&#x2F;<br>Delete the current directory.  No warrning will occur.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-built_in">cat</span> ./.../*.txt<br></code></pre></td></tr></table></figure>
+<p>Print all the .txt files in that directory.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-built_in">cat</span> ./.../*.txt &gt; ./text<br></code></pre></td></tr></table></figure>
+<p>Print all the .txt file’s content in that text file</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">python3 ./.../..py &gt; ./text<br></code></pre></td></tr></table></figure>
+<p>print the .py running results on text file.</p>
+<p>file .wav :<br>Check the identity of the wav file size</p>
+<p>Use mv to change the file name:<br>mv .&#x2F;..&#x2F;..&#x2F;.py .&#x2F;..&#x2F;..&#x2F;.py<br>We can use remove to change the file’s name.</p>
+<p>which …<br>Check where … is, the location of …</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">ll -lh<br></code></pre></td></tr></table></figure>
+<p>check all the files’ size</p>
+<p>Vim:<br>To the top: GG<br>To the bottom: gg<br>vim name+tab : auto-type the name<br>auto sort: “:sort”<br>:set number: check how many lines<br>dd: delete one line</p>
+<p>search the “keyword”<br>&#x2F;“keyword”</p>
+<p>#other notes<br>The liux and windows files are not totally exchangeable, especially when we operate the .txt files on those two different kinds of machines.</p>
+<p>especially we can see some codes shows the dissimilarities like: <feff>.</p>
+<p>we can use dos2unix tool to do the convertion:<br>After we did wget install dos2unix, then we can just do:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">dos2unix the_file_I_want_do_conversion.txt<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr>
+<p>title: kaldi notes<br>date: 2022-03-11 21:48:12<br>tags:</p>
+<hr>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/03/23/SLP-Learning-Resources/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SLP Learning Resources</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/23/g/">
+                        <span class="hidden-mobile">g</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
