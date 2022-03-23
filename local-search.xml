@@ -4,24 +4,11 @@
   
   
   <entry>
-    <title>test_1</title>
-    <link href="/2022/03/23/test-1/"/>
-    <url>/2022/03/23/test-1/</url>
+    <title>Hexo Tutorials</title>
+    <link href="/2022/03/23/Hexo-Tutorials/"/>
+    <url>/2022/03/23/Hexo-Tutorials/</url>
     
-    <content type="html"><![CDATA[<p><img src="/nodejs.jpeg" alt="nodejs"><br><img src="/favicon.png" alt="nfavicon"><br><img src="/public/img/favicon.png" alt="nfavicon"></p><img src="/2022/03/23/test-1/nodejs.jpeg" class title="This is an test image">]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>hexo tutorials</title>
-    <link href="/2022/03/23/hexo-tutorials/"/>
-    <url>/2022/03/23/hexo-tutorials/</url>
-    
-    <content type="html"><![CDATA[<p>#1. What is Hexo<br>Hexo is a kind of blog architecure for us to easily deploy, also, it is very convinient for us to realize it with our Github pages.</p><p>#2. How to install Hexo<br>#2.1 Install Node.js</p><p><img src="/img/nodejs.png" alt="nodejs"></p><p>There are three commands which will be used everyday:</p><h1 id="Daily-Commands"><a href="#Daily-Commands" class="headerlink" title="Daily Commands"></a>Daily Commands</h1><figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><pre><code class="hljs Bash"><br>hexo clean       <span class="hljs-comment"># this is for cleaning the database</span><br>hexo g <br><span class="hljs-comment">#or </span><br>hexo generate  <span class="hljs-comment"># this is to generate the website with the latest updation</span><br><br><br>hexo d<br><span class="hljs-comment"># or</span><br>hexo deploy      <span class="hljs-comment"># deploy your webiste into your github repository</span><br><br><br>hexo new <span class="hljs-string">&quot;the_post_name_you_want_to_add_in&quot;</span><br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<p>#1. What is Hexo<br>Hexo is a kind of blog architecure for us to easily deploy, also, it is very convinient for us to realize it with our Github pages.</p><p>#2. How to install Hexo<br>#2.1 Install Node.js</p><p><img src="/img/nodejs.png" alt="nodejs"></p><img src="/2022/03/23/Hexo-Tutorials/nodejs.jpeg" class title="This is an test image"><p>There are three commands which will be used everyday:</p><h1 id="Daily-Commands"><a href="#Daily-Commands" class="headerlink" title="Daily Commands"></a>Daily Commands</h1><figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><pre><code class="hljs Bash"><br>hexo clean       <span class="hljs-comment"># this is for cleaning the database</span><br>hexo g <br><span class="hljs-comment">#or </span><br>hexo generate  <span class="hljs-comment"># this is to generate the website with the latest updation</span><br><br><br>hexo d<br><span class="hljs-comment"># or</span><br>hexo deploy      <span class="hljs-comment"># deploy your webiste into your github repository</span><br><br><br>hexo new <span class="hljs-string">&quot;the_post_name_you_want_to_add_in&quot;</span><br><br><br><br>hexo cl &amp;&amp; hexo g &amp;&amp; hexo d  <span class="hljs-comment"># Just deploy totally into your github </span><br><br></code></pre></td></tr></table></figure>]]></content>
     
     
     
