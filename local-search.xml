@@ -4,6 +4,32 @@
   
   
   <entry>
+    <title>Speech and Matlab</title>
+    <link href="/2022/04/21/Speech-and-Matlab/"/>
+    <url>/2022/04/21/Speech-and-Matlab/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Speech Synthesis</title>
+    <link href="/2022/04/01/Speech-Synthesis/"/>
+    <url>/2022/04/01/Speech-Synthesis/</url>
+    
+    <content type="html"><![CDATA[<p>Four types of synthetic speech:</p><ol><li>Mechanical Speech</li><li>Formant Synthesis: Based on Source&#x2F;Filter Theory</li><li>Concatenative Speech: &#x3D; String bits and pieces of natual speech together</li><li>Articulary Synthesis:generation speech from a model of the vocal tract</li></ol><p>贝尔本人是个语音学家其实，父母也是。</p><p>貝爾在1885年4月15日，在一次實驗中把自己說話的聲音錄在一張紙音盤上，成為人類史上的第一張用聲音簽名的音盤。此紙音盤長時間被保存在<a href="https://zh.wikipedia.org/wiki/%E5%8F%B2%E5%AF%86%E6%A3%AE%E5%B0%BC%E5%AD%A6%E4%BC%9A">史密森博物館</a>（Smithsonian Museum），直到科學家以最新的資訊科技，在無需破壞脆弱音盤下而重現錄音。2013年4月，在跨越了130年後，外界終於可以聽到貝爾的原音，在公布的錄音中可以聽到貝爾以濃重<a href="https://zh.wikipedia.org/wiki/%E8%98%87%E6%A0%BC%E8%98%AD">蘇格蘭</a><a href="https://zh.wikipedia.org/wiki/%E5%8F%A3%E9%9F%B3_(%E7%A4%BE%E6%9C%83%E8%AA%9E%E8%A8%80%E5%AD%B8)">腔調</a>數著連串數字，並在最後以：「聽聽我的聲音。──亞歷山大·格拉漢姆·貝爾」結束了這段傳奇錄音。</p><p>贝尔曾经靠挤压一只狗来生成声音。</p><p>Klatt Talk被霍金一直在用，并且一直在用。</p><p>用LPC的合成器应用：<a href="https://speaknspell.co.uk/">https://speaknspell.co.uk/</a></p><p>课程：</p><p><a href="http://uofclinguistics.org/441">http://uofclinguistics.org/441</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Hexo Tutorials</title>
     <link href="/2022/03/23/Hexo-Tutorials/"/>
     <url>/2022/03/23/Hexo-Tutorials/</url>
