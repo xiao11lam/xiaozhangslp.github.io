@@ -8,7 +8,7 @@
     <link href="/2022/05/01/Web-Design/"/>
     <url>/2022/05/01/Web-Design/</url>
     
-    <content type="html"><![CDATA[<p><img src="/Users/mac/b/source/_posts/Web-Design/WechatIMG414.jpeg" alt="WechatIMG414"></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Wordpress"><a href="#Wordpress" class="headerlink" title="Wordpress"></a>Wordpress</h1><p><img src="/Users/mac/b/source/_posts/Web-Design/WechatIMG414.jpeg" alt="WechatIMG414"></p><p>wordpress是我比较推荐的网页开发框架，优点是开源方便，但是缺点也非常明显，就是它不支持国内网访问，并且有的时候并不是很快。但是不失为一种访问静态网站的神器。</p><h1 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h1><h2 id="What-is-Hexo"><a href="#What-is-Hexo" class="headerlink" title="What is Hexo"></a>What is Hexo</h2><p>Hexo is a kind of blog architecure for us to easily deploy, also, it is very convinient for us to realize it with our Github pages.</p><h2 id="2-How-to-install-Hexo"><a href="#2-How-to-install-Hexo" class="headerlink" title="2. How to install Hexo"></a>2. How to install Hexo</h2><h3 id="2-1-Install-Node-js"><a href="#2-1-Install-Node-js" class="headerlink" title="2.1 Install Node.js"></a>2.1 Install Node.js</h3><p><img src="/img/nodejs.png" alt="nodejs"></p><img src="/2022/05/01/Web-Design/nodejs.jpeg" class title="This is an test image"><p><img src="/Users/mac/b/source/_posts/Web-Design/nodejs.jpeg" alt="nodejs"></p>]]></content>
     
     
     
