@@ -24,7 +24,7 @@
 <meta property="og:description" content="Text ProcessingCapturing Text DataPlain Text123456import os# Read in a plain text filewith open(os.path.join(&quot;data&quot;, &quot;hieroglyph.txt&quot;), &quot;r&quot;) as f:    text &#x3D; f.read()    p">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-05-01T08:04:13.000Z">
-<meta property="article:modified_time" content="2022-05-01T08:10:34.834Z">
+<meta property="article:modified_time" content="2022-05-01T08:15:25.566Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -196,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.1k 字
+      2.2k 字
     </span>
   
 
@@ -205,7 +205,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10 分钟
+      19 分钟
     </span>
   
 
@@ -246,6 +246,13 @@
 
 
 <figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs vbnet">publisher	title<br><span class="hljs-number">0</span>	Livemint	fed<span class="hljs-comment">&#x27;s charles plosser sees high bar for change...</span><br><span class="hljs-number">1</span>	IFA Magazine	us open: stocks fall after fed official hints ...<br><span class="hljs-number">2</span>	IFA Magazine	fed risks falling <span class="hljs-comment">&#x27;behind the curve&#x27;, charles ...</span><br><span class="hljs-number">3</span>	Moneynews	fed<span class="hljs-comment">&#x27;s plosser: nasty weather has curbed job gr...</span><br><span class="hljs-number">4</span>	NASDAQ	plosser: fed may have <span class="hljs-keyword">to</span> accelerate tapering pace<br></code></pre></td></tr></table></figure>
+<h3 id="Online-Resource"><a href="#Online-Resource" class="headerlink" title="Online Resource"></a>Online Resource</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs Bash">import requests<br>import json<br><br><span class="hljs-comment"># Fetch data from a REST API</span><br>r = requests.get(<br>    <span class="hljs-string">&quot;https://quotes.rest/qod.json&quot;</span>)<br>res = r.json()<br><span class="hljs-built_in">print</span>(json.dumps(res, indent=4))<br><br><span class="hljs-comment"># Extract relevant object and field</span><br>q = res[<span class="hljs-string">&quot;contents&quot;</span>][<span class="hljs-string">&quot;quotes&quot;</span>][0]<br><span class="hljs-built_in">print</span>(q[<span class="hljs-string">&quot;quote&quot;</span>], <span class="hljs-string">&quot;\n--&quot;</span>, q[<span class="hljs-string">&quot;author&quot;</span>])<br></code></pre></td></tr></table></figure>
+
+
+<h2 id="Cleaning"><a href="#Cleaning" class="headerlink" title="Cleaning"></a>Cleaning</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs Bash">import requests<br><br><span class="hljs-comment"># Fetch a web page</span><br>r = requests.get(<span class="hljs-string">&quot;https://news.ycombinator.com&quot;</span>)<br><span class="hljs-built_in">print</span>(r.text)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span> <span class="hljs-attr">op</span>=<span class="hljs-string">&quot;news&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;referrer&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;origin&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;news.css?5eYyZbFhPFukXyt5EaSy&quot;</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;shortcut icon&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;favicon.ico&quot;</span>&gt;</span><br>  \ autocapitalize=&quot;off&quot; autocomplete=&quot;false&quot;&gt;<span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span><br>            <span class="hljs-tag">&lt;/<span class="hljs-name">center</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">center</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&#x27;text/javascript&#x27;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&#x27;hn.js?5eYyZbFhPFukXyt5EaSy&#x27;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
 
 
 
