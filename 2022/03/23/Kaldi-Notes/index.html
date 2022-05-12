@@ -18,18 +18,18 @@
   
     <meta name="description" content="1. IntroductinKaldi has a lot of examples in its projects.There are two necessary raw materials for us to train the model:  .wav file labelled .txt  We need four necessary elements in Kaldi! We call i">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SLP">
+<meta property="og:title" content="Kaldi Notes">
 <meta property="og:url" content="http://example.com/2022/03/23/Kaldi-Notes/index.html">
 <meta property="og:site_name" content="SLP">
 <meta property="og:description" content="1. IntroductinKaldi has a lot of examples in its projects.There are two necessary raw materials for us to train the model:  .wav file labelled .txt  We need four necessary elements in Kaldi! We call i">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-22T16:23:41.500Z">
-<meta property="article:modified_time" content="2022-05-12T10:35:23.923Z">
+<meta property="article:published_time" content="2022-03-23T07:10:56.000Z">
+<meta property="article:modified_time" content="2022-05-12T11:02:20.485Z">
 <meta property="article:author" content="Xiao Zhang">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>SLP</title>
+  <title>Kaldi Notes - SLP</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -175,7 +175,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="">
+            <span class="h2" id="subtitle" title="Kaldi Notes">
               
             </span>
 
@@ -185,8 +185,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-03-23 00:23" pubdate>
-        March 23, 2022 am
+      <time datetime="2022-03-23 15:10" pubdate>
+        March 23, 2022 pm
       </time>
     </span>
   
@@ -234,7 +234,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">Kaldi Notes</h1>
             
             <div class="markdown-body">
               <h1 id="1-Introductin"><a href="#1-Introductin" class="headerlink" title="1. Introductin"></a>1. Introductin</h1><p>Kaldi has a lot of examples in its projects.There are two necessary raw materials for us to train the model:</p>
@@ -269,7 +269,7 @@
 
 <h3 id="1-2-2-Text-washing-prepare-the-data"><a href="#1-2-2-Text-washing-prepare-the-data" class="headerlink" title="1.2.2 Text washing(prepare the data)"></a>1.2.2 Text washing(prepare the data)</h3><p>But before we launch the test, we need to firstly do the text washing.</p>
 <p>We need to prpare the data and do the data cleaning from the data_path directory<br>def pre_data(data_path):</p>
-<h4 id="1-2-2-1-Regular-Expression-this-is-always-the-first-step"><a href="#1-2-2-1-Regular-Expression-this-is-always-the-first-step" class="headerlink" title="1.2.2.1 Regular Expression, this is always the first step"></a>1.2.2.1 Regular Expression, this is always the first step</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">This is core processing function, we mostly use Regular Expression here.</span><br><span class="hljs-string">Here is just a sample code, that we need to deal with: abrabic numbers, if its number, then there is no need to do segment, just replace it with space one by one. </span><br><span class="hljs-string"></span><br><span class="hljs-string">input：&quot;一二三五六&quot;</span><br><span class="hljs-string">output：&quot;一 二 三 五 六&quot;</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><br><br><br><br><br>```Python<br><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solve_data</span>():<br>	<span class="hljs-comment"># Delete &quot;()&quot;</span><br>	<span class="hljs-comment"># detect Chinese characters(\u4e00-\u9fa5) from a-z, A-Z, 0-9, &quot;.&quot;. It will catch the sentences with those elements.</span><br>	a = re.findall(<span class="hljs-string">&#x27;[\u4e00-\u9fa5a-zA-Z0-9 .]+&#x27;</span>, data, re.S)<br>	<span class="hljs-comment">#print(&quot;&quot;.join(a))</span><br>	<span class="hljs-keyword">return</span> <span class="hljs-string">&quot; &quot;</span>.join(a)<br>	<span class="hljs-keyword">pass</span><br><br><span class="hljs-comment"># save the results into a new &quot;solve_data&quot; path</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">pre_data</span>(<span class="hljs-params">data_path+<span class="hljs-string">&quot;solve_data&quot;</span></span>):<br>	data = []<br>	<span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(data_path, <span class="hljs-string">&quot;w&quot;</span>, encoding=utf-<span class="hljs-number">8</span>) <span class="hljs-keyword">as</span> file:<br>		<span class="hljs-comment"># loop all the lines</span><br>		<span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> data:<br>			file.writelines(<span class="hljs-built_in">str</span>(line)+<span class="hljs-string">&quot;\n&quot;</span>)<br>			<span class="hljs-keyword">pass</span><br>		<span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+<h4 id="1-2-2-1-Regular-Expression-this-is-always-the-first-step"><a href="#1-2-2-1-Regular-Expression-this-is-always-the-first-step" class="headerlink" title="1.2.2.1 Regular Expression, this is always the first step"></a>1.2.2.1 Regular Expression, this is always the first step</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">This is core processing function, we mostly use Regular Expression here.</span><br><span class="hljs-string">Here is just a sample code, that we need to deal with: abrabic numbers, if its number, then there is no need to do segment, just replace it with space one by one. </span><br><span class="hljs-string"></span><br><span class="hljs-string">input：&quot;一二三五六&quot;</span><br><span class="hljs-string">output：&quot;一 二 三 五 六&quot;</span><br><span class="hljs-string">&#x27;&#x27;&#x27;</span><br><br>```Python<br><span class="hljs-keyword">import</span> re<br><span class="hljs-keyword">def</span> <span class="hljs-title function_">solve_data</span>():<br>	<span class="hljs-comment"># Delete &quot;()&quot;</span><br>	<span class="hljs-comment"># detect Chinese characters(\u4e00-\u9fa5) from a-z, A-Z, 0-9, &quot;.&quot;. It will catch the sentences with those elements.</span><br>	a = re.findall(<span class="hljs-string">&#x27;[\u4e00-\u9fa5a-zA-Z0-9 .]+&#x27;</span>, data, re.S)<br>	<span class="hljs-comment">#print(&quot;&quot;.join(a))</span><br>	<span class="hljs-keyword">return</span> <span class="hljs-string">&quot; &quot;</span>.join(a)<br>	<span class="hljs-keyword">pass</span><br><br><span class="hljs-comment"># save the results into a new &quot;solve_data&quot; path</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">pre_data</span>(<span class="hljs-params">data_path+<span class="hljs-string">&quot;solve_data&quot;</span></span>):<br>	data = []<br>	<span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(data_path, <span class="hljs-string">&quot;w&quot;</span>, encoding=utf-<span class="hljs-number">8</span>) <span class="hljs-keyword">as</span> file:<br>		<span class="hljs-comment"># loop all the lines</span><br>		<span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> data:<br>			file.writelines(<span class="hljs-built_in">str</span>(line)+<span class="hljs-string">&quot;\n&quot;</span>)<br>			<span class="hljs-keyword">pass</span><br>		<span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
 
 <p>After we get our target, we need to set the processing functions.</p>
 <h4 id="1-1-1-2-Replace-numbers-into-words"><a href="#1-1-1-2-Replace-numbers-into-words" class="headerlink" title="1.1.1.2 Replace numbers into words"></a>1.1.1.2 Replace numbers into words</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs Python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">replace_num</span>(<span class="hljs-params">data</span>)<br>	data.replace(<span class="hljs-string">&quot;.&quot;</span>, <span class="hljs-string">&quot;dot&quot;</span>)<br>	data.replace(<span class="hljs-string">&quot;0&quot;</span>, <span class="hljs-string">&quot;zero&quot;</span>)<br>	data.replace(<span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-string">&quot;one&quot;</span>)<br>	data.replace(<span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-string">&quot;two&quot;</span>)<br>	data.replace(<span class="hljs-string">&quot;3&quot;</span>, <span class="hljs-string">&quot;three&quot;</span>)<br>	<span class="hljs-comment"># .......	</span><br></code></pre></td></tr></table></figure>
@@ -436,10 +436,10 @@
 <h3 id="2-4-1-write-get-lm-sh-we-need-to-write-aw-shell-script-to-run-and-get-th-lm-language-model"><a href="#2-4-1-write-get-lm-sh-we-need-to-write-aw-shell-script-to-run-and-get-th-lm-language-model" class="headerlink" title="2.4.1 write get_lm.sh (we need to write aw shell script to run and get th lm(language model))"></a>2.4.1 write get_lm.sh (we need to write aw shell script to run and get th lm(language model))</h3><p>n-gram language model is statistical language model, more traning data can be more “better” in some ways. </p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-comment"># You need firstly specify your corpus sources.</span><br>text = <span class="hljs-string">&quot;./text.lm&quot;</span><br><span class="hljs-comment"># 1. get all the corpus</span><br><span class="hljs-comment"># awk &#x27;&#123;for(i=2; i&lt;NF; i++) printf $i &quot;&quot;; printf &#x27;\n&#x27;&#125;&#x27; text &gt; xxx.lm</span><br><span class="hljs-comment"># loop all the columns:</span><br><span class="hljs-comment">#	NF here means the last column</span><br><span class="hljs-comment">#   printf just like C language, they are the same in some ways</span><br><span class="hljs-comment"># 2. Deploy Trigram n-gram model</span><br>ngram-count -text text.lm -order 3 write train.part.txt.count  <br><span class="hljs-comment"># OR we can use</span><br>ngram-count -text <span class="hljs-variable">$text</span> -order 3 write train.part.txt.count  <br><span class="hljs-comment"># $text means the file itself, we already defined it at first.</span><br><span class="hljs-comment"># -text: the corpus</span><br><span class="hljs-comment"># wirte: write the file</span><br><span class="hljs-comment"># here 3 means tri, which indicates triphone, and write into train.part.txt.count file.</span><br><span class="hljs-comment"># here are the preview</span><br><br><span class="hljs-comment">#   word  pairs         times</span><br><span class="hljs-comment">#      I                  10</span><br><span class="hljs-comment">#    I  Love              5</span><br><span class="hljs-comment">#  I  Love Kaldi          1</span><br><span class="hljs-comment">#  Hello World &lt;/s&gt;       2</span><br><span class="hljs-comment">#  &lt;/s&gt; is great          1</span><br><span class="hljs-comment"># &lt;/s&gt; means the starting or ending point, usually means something will begin or end from there.  </span><br><br><span class="hljs-comment"># 3. From the 2nd step,  generateing the lm</span><br>ngram-count -<span class="hljs-built_in">read</span> train.part.txt.count -order 3 -lm LM -interpole -kndiscount<br><span class="hljs-comment">#  -lm which means the generated Language Model, right now we call it LM</span><br><span class="hljs-comment"># -interpole is the smoothing function, and kndiscount is the callback function.There are two possibilities, one is the original and other which is callback function.</span><br><span class="hljs-comment">#  \data\</span><br><span class="hljs-comment"># ngram 1 = 2821      , here means there are 2821 1grams&#x27; pairs</span><br><span class="hljs-comment"># ngram 2 = 6344</span><br><span class="hljs-comment"># ngram 3 = 444</span><br><span class="hljs-comment"># \1-grams:</span><br><span class="hljs-comment"># -3.4234324     1       -0.034523532 this is also probabities but with log(), we call backoff method</span><br><span class="hljs-comment"># -3.4234224     2       -0.032323532</span><br><span class="hljs-comment"># -2.3234224     A       -0.023233532</span><br><span class="hljs-comment"># \2-grams:</span><br><span class="hljs-comment"># -3.2424432     I  Love          -0.232312332</span><br><span class="hljs-comment"># \3-grams:</span><br><span class="hljs-comment"># -4.3244343     I  Love Kaldi    -0.454554545</span><br><br></code></pre></td></tr></table></figure>
 
-<h3 id="2-4-2-Generate-G-fst"><a href="#2-4-2-Generate-G-fst" class="headerlink" title="2.4.2 Generate G.fst"></a>2.4.2 Generate G.fst</h3><p>There has two ways to generate G.fst.</p>
+<h3 id="2-4-2-Generate-G-fst"><a href="#2-4-2-Generate-G-fst" class="headerlink" title="2.4.2 Generate G.fst"></a>2.4.2 Generate G.fst</h3><p>There has two ways to generate <strong>G.fst</strong>.</p>
 <p>Way1: Just Call from the Kaldi shell</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">utils/format_lm_sri.sh data/lang /lm/LM /data/local/dict/lexicon.txt/data/lang_test<br></code></pre></td></tr></table></figure>
-<p>Way2: using arpa2fst</p>
+<p>Way2: using <strong>arpa2fst</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">arpa2fst --disambig-symbol=<span class="hljs-comment">#0 --read-symbol-table=/data/lang/words.txt /lm/LM/G.fst</span><br></code></pre></td></tr></table></figure>
 
 
@@ -607,15 +607,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/03/23/hello-world/">
+                      <a href="/2022/03/23/Hexo-Tutorials/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Kalid Notes</span>
+                        <span class="hidden-mobile">Hexo Tutorials</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/03/23/Speech-Language-Proceesing-OpenCourse/">
+                        <span class="hidden-mobile">Speech & Language Proceesing OpenCourse</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
