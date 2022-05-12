@@ -18,18 +18,18 @@
   
     <meta name="description" content="1. IntroductinKaldi has a lot of examples in its projects.There are two necessary raw materials for us to train the model:  .wav file labelled .txt  We need four necessary elements in Kaldi! We call i">
 <meta property="og:type" content="article">
-<meta property="og:title" content="kaldi notes">
-<meta property="og:url" content="http://example.com/2022/05/12/Kaldi-Notes/index.html">
+<meta property="og:title" content="SLP">
+<meta property="og:url" content="http://example.com/2022/03/23/Kaldi-Notes/index.html">
 <meta property="og:site_name" content="SLP">
 <meta property="og:description" content="1. IntroductinKaldi has a lot of examples in its projects.There are two necessary raw materials for us to train the model:  .wav file labelled .txt  We need four necessary elements in Kaldi! We call i">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-05-12T13:48:12.000Z">
-<meta property="article:modified_time" content="2022-05-12T09:57:03.255Z">
+<meta property="article:published_time" content="2022-03-22T16:23:41.500Z">
+<meta property="article:modified_time" content="2022-05-12T10:35:23.923Z">
 <meta property="article:author" content="Xiao Zhang">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>kaldi notes - SLP</title>
+  <title>SLP</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -175,7 +175,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="kaldi notes">
+            <span class="h2" id="subtitle" title="">
               
             </span>
 
@@ -185,8 +185,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-05-12 21:48" pubdate>
-        May 12, 2022 pm
+      <time datetime="2022-03-23 00:23" pubdate>
+        March 23, 2022 am
       </time>
     </span>
   
@@ -234,13 +234,13 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">kaldi notes</h1>
+            <h1 style="display: none"></h1>
             
             <div class="markdown-body">
               <h1 id="1-Introductin"><a href="#1-Introductin" class="headerlink" title="1. Introductin"></a>1. Introductin</h1><p>Kaldi has a lot of examples in its projects.There are two necessary raw materials for us to train the model:</p>
 <ol>
-<li>.wav file</li>
-<li>labelled .txt</li>
+<li><strong>.wav file</strong></li>
+<li><strong>labelled .txt</strong></li>
 </ol>
 <p>We need four necessary elements in Kaldi! We call it <strong>“HCLG.fst”</strong>, we can make speech recognition from these core file. Acutally, just like we are building a map, and we just decode all the paths from there in order to get the prediction results. The underneath idea just like from the typology from the mathematics.<br>We are using Viterbi algorithm to decoding our HCLG.fst. The exact name should be token passing method, which is a kind of variant algotithm of Viterbi.</p>
 <h2 id="1-1-Audio-Corpus"><a href="#1-1-Audio-Corpus" class="headerlink" title="1.1 Audio Corpus"></a>1.1 Audio Corpus</h2><p>In kaldi, 1 frame is 10ms. For some front work, it always like 24ms for one frame. For a workable dataset, we at least need 2000 hrs data. </p>
@@ -258,6 +258,14 @@
 <p>Eg. there has a <strong>dir</strong> with many .txt files in UTF16 which in <em>local&#x2F;data</em>:</p>
 <p>Here are the standard manipulation:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-comment"># firstly, we make a new dir and make sure put in all the manipulated data in this dir</span><br><span class="hljs-built_in">mkdir</span> <span class="hljs-built_in">local</span>/audio_data_utf8<br><br><span class="hljs-comment"># then we do a loop to put all the data in local/data to local/audio_data_utf8</span><br><br><span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> <span class="hljs-built_in">local</span>/data/*;<br><span class="hljs-keyword">do</span> <br>&gt; y=`<span class="hljs-built_in">echo</span> <span class="hljs-variable">$x</span> | sed <span class="hljs-string">&#x27;s|data|audio_data_utf8|&#x27;</span>`;<br><span class="hljs-comment"># &gt; echo $y      just preview the output</span><br><span class="hljs-comment"># &gt; done </span><br><span class="hljs-comment"># transform all &quot;x&quot; utf16 files into utf8</span><br>iconv -f UTF-16LE -t UTF-8 <span class="hljs-variable">$x</span> &gt; <span class="hljs-variable">$y</span>;<br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+
+<p>other notes</p>
+<p>The liux and windows files are not totally exchangeable, especially when we operate the .txt files on those two different kinds of machines.</p>
+<p>especially we can see some codes shows the dissimilarities like: <feff>.</feff></p>
+<p>we can use dos2unix tool to do the convertion:<br>After we did wget install dos2unix, then we can just do:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">dos2unix the_file_I_want_do_conversion.txt<br></code></pre></td></tr></table></figure>
+
+
 
 <h3 id="1-2-2-Text-washing-prepare-the-data"><a href="#1-2-2-Text-washing-prepare-the-data" class="headerlink" title="1.2.2 Text washing(prepare the data)"></a>1.2.2 Text washing(prepare the data)</h3><p>But before we launch the test, we need to firstly do the text washing.</p>
 <p>We need to prpare the data and do the data cleaning from the data_path directory<br>def pre_data(data_path):</p>
@@ -281,9 +289,9 @@
 <h3 id="1-2-3-Dictionary"><a href="#1-2-3-Dictionary" class="headerlink" title="1.2.3 Dictionary"></a>1.2.3 Dictionary</h3><p>We need to get the lexicon.txt by running  get_lexicon.py.</p>
 <p>dict includes:</p>
 <ol>
-<li>lexicon.txt : word –&gt; phones</li>
-<li>phone.txt&#x2F;nonsilence_phones.txt : all the phones</li>
-<li>silence_phones.txt : SIL</li>
+<li><strong>lexicon.txt : word –&gt; phones</strong></li>
+<li><strong>phone.txt&#x2F;nonsilence_phones.txt : all the phones</strong></li>
+<li><strong>silence_phones.txt : SIL</strong></li>
 </ol>
 <p>We need two kinds of dictionaries.<br>1st. the lexicon.txt from the corpus to better train a n-gram model, in some words, the language model.<br>2st. the word-to-phones, we also need a reference lists from there, we need acoustic model. In this case, so we need a “BIG” dictionary.</p>
 <p>In this step, we need to transform the words into phones, so we can align the words and train them.</p>
@@ -314,7 +322,7 @@
 
 
 
-<h1 id="“The-Big-Four”"><a href="#“The-Big-Four”" class="headerlink" title="“The Big Four”"></a>“The Big Four”</h1><p>From the last chapter we already knew HCLG.fst includes H.fst, C.fst, L.fst, G.fs. </p>
+<h1 id="2-“The-Big-Four”"><a href="#2-“The-Big-Four”" class="headerlink" title="2. “The Big Four”"></a>2. “The Big Four”</h1><p>From the last chapter we already knew HCLG.fst includes H.fst, C.fst, L.fst, G.fs. </p>
 <p>Here are the flowchart: from acoustic characteristics —&gt; phones —&gt; words —&gt; sentences.</p>
 <p><strong>H.fst enables us to input the acoustics characteritics and return the phone.</strong></p>
 <p><strong>L.fst enables us to input phones to word.</strong></p>
@@ -450,19 +458,20 @@
 
 
 <p><a target="_blank" rel="noopener" href="https://speech.zone/">https://speech.zone/</a></p>
-<h1 id="UNIX-Shell-Cmds"><a href="#UNIX-Shell-Cmds" class="headerlink" title="UNIX Shell Cmds"></a>UNIX Shell Cmds</h1><p>cp  -r S0252&#x2F;S0252_mic&#x2F;* .&#x2F;S0150&#x2F;S0150_mic&#x2F;</p>
+<h1 id="UNIX-Shell-Cmds"><a href="#UNIX-Shell-Cmds" class="headerlink" title="UNIX Shell Cmds"></a>UNIX Shell Cmds</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cp</span>  -r S0252/S0252_mic/* ./S0150/S0150_mic/<br></code></pre></td></tr></table></figure>
+
 <p>Copy all the data from the “S0252&#x2F;S0252_mic&#x2F;“ directory to “&#x2F;S0150&#x2F;S0150_mic&#x2F;“ directory. “-r” means copy directly without any warnings.</p>
-<p>du -sh<br>Check the size of the directory.</p>
-<p>du -h –max-depth&#x3D;1 &#x2F;.<br>Check all the directory size under the current directory.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">du</span> -sh<br></code></pre></td></tr></table></figure>
+
+<p>Check the size of the directory.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">du</span> -h --max-depth=1 /.<br></code></pre></td></tr></table></figure>
+
+<p>Check all the directory size under the current directory.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-built_in">cat</span> ...txt | <span class="hljs-built_in">tr</span> <span class="hljs-string">&#x27;[:upper:]&#x27;</span> <span class="hljs-string">&#x27;[:lower]&#x27;</span><br></code></pre></td></tr></table></figure>
 <p>We can translate the upper case words in that file into lower case.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-built_in">cat</span> ...txt | <span class="hljs-built_in">tr</span> <span class="hljs-string">&#x27;[:upper:]&#x27;</span> <span class="hljs-string">&#x27;[:lower]&#x27;</span> | grep -o <span class="hljs-string">&quot;[a-z]&quot;</span><br></code></pre></td></tr></table></figure>
 <p>Print the document letter by letter.</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">a</span><br>d<br>c<br><span class="hljs-selector-tag">b</span><br></code></pre></td></tr></table></figure>
-
-
-
-
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash"><span class="hljs-built_in">cat</span> ...txt | <span class="hljs-built_in">tr</span> <span class="hljs-string">&#x27;[:upper:]&#x27;</span> <span class="hljs-string">&#x27;[:lower]&#x27;</span> | <span class="hljs-built_in">sort</span><br></code></pre></td></tr></table></figure>
 <p>Print the document letter by letter and sort them.</p>
@@ -494,8 +503,6 @@
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">y</span><br><span class="hljs-attribute">uw</span><br><span class="hljs-attribute">eh</span><br></code></pre></td></tr></table></figure>
 
 
-
-
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">egrep -h -o <span class="hljs-string">&quot;[a-z]&#123;1,2&#125;$&quot;</span> *.lab | <span class="hljs-built_in">sort</span> | <span class="hljs-built_in">uniq</span> -c | <span class="hljs-built_in">sort</span> -nr <br></code></pre></td></tr></table></figure>
 <p>This will print the each phone frequency in reverse order:</p>
 <figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">121 </span>y<br><span class="hljs-symbol">120 </span>uw<br><span class="hljs-symbol">110 </span>eh<br></code></pre></td></tr></table></figure>
@@ -515,8 +522,15 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">python3 ./.../..py &gt; ./text<br></code></pre></td></tr></table></figure>
 <p>print the .py running results on text file.</p>
 <p>file .wav :<br>Check the identity of the wav file size</p>
-<p>Use mv to change the file name:<br>mv .&#x2F;..&#x2F;..&#x2F;.py .&#x2F;..&#x2F;..&#x2F;.py<br>We can use remove to change the file’s name.</p>
-<p>which …<br>Check where … is, the location of …</p>
+<p>Use mv to change the file name:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mv</span> ./../../.py ./../../.py<br></code></pre></td></tr></table></figure>
+
+
+<p>We can use remove to change the file’s name.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">which</span> ...<br></code></pre></td></tr></table></figure>
+
+
+<p>Check where … is, the location of …</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">ll -lh<br></code></pre></td></tr></table></figure>
 <p>check all the files’ size</p>
 <p>If there has a space in the beginning of the file’s name, we just need to delete it.</p>
@@ -536,13 +550,26 @@
 
 
 
-<h1 id="Vim"><a href="#Vim" class="headerlink" title="Vim:"></a>Vim:</h1><p>To the top: GG<br>To the bottom: gg<br>vim name+tab : auto-type the name<br>auto sort: “:sort”<br>:set number: check how many lines<br>dd: delete one line</p>
-<p>search the “keyword”<br>&#x2F;“keyword”</p>
-<p>#other notes<br>The liux and windows files are not totally exchangeable, especially when we operate the .txt files on those two different kinds of machines.</p>
-<p>especially we can see some codes shows the dissimilarities like: <feff>.</feff></p>
-<p>we can use dos2unix tool to do the convertion:<br>After we did wget install dos2unix, then we can just do:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">dos2unix the_file_I_want_do_conversion.txt<br></code></pre></td></tr></table></figure>
+<h1 id="Vim"><a href="#Vim" class="headerlink" title="Vim:"></a>Vim:</h1><p>To the top: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">GG<br></code></pre></td></tr></table></figure>
 
+<p>To the bottom:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Bash">gg<br></code></pre></td></tr></table></figure>
+
+<p>vim name+tab : </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">auto-type the name <br></code></pre></td></tr></table></figure>
+
+<p>auto sort: </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">:<span class="hljs-built_in">sort</span><br></code></pre></td></tr></table></figure>
+
+<p>check how many lines:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">:<span class="hljs-built_in">set</span> number<br></code></pre></td></tr></table></figure>
+
+<p>delete one line:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">dd</span><br></code></pre></td></tr></table></figure>
+
+<p>search the “keyword”</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">/<span class="hljs-string">&quot;keyword&quot;</span><br></code></pre></td></tr></table></figure>
 
 
 
@@ -580,15 +607,15 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2022/03/23/hello-world/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Kalid Notes</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
-                    
-                      <a href="/2022/05/08/Speech-Deep-Learning-Project-Deployment/">
-                        <span class="hidden-mobile">Speech Deep Learning Project Deployment</span>
-                        <span class="visible-mobile">Next</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
                     
                   </article>
                 </div>
